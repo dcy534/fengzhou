@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>枫洲科技 · AI 人才招聘与咨询</title>
+<script defer src="https://cloud.umami.is/script.js" data-website-id="0dcae7c5-c342-4380-b4a9-c6bbfc25c010"></script>
 <style>
 :root{
   --bg:#FBFBFD; --bg-2:#F5F5F7; --card:#FFFFFF; --ink:#1D1D1F; --ink-2:#424245; --mute:#86868B; --mute-2:#B8B8BE;
@@ -145,9 +146,11 @@ h1{font-size:clamp(40px,7vw,84px);line-height:1.06;font-weight:700;margin:24px 0
 .partners:hover .marquee{animation-play-state:paused}
 @keyframes mq{to{transform:translateX(-50%)}}
 .pl{display:flex;align-items:center;gap:12px;padding:0 44px;font-size:26px;font-weight:600;color:var(--mute);white-space:nowrap;transition:color .25s,transform .25s;cursor:default}
-.pl i{width:10px;height:10px;border-radius:3px;background:var(--mute-2);transition:background .25s}
+.pl .lg{flex:none;width:38px;height:38px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-style:normal;font-size:17px;font-weight:700;color:#fff;background:var(--mute-2);object-fit:contain;transition:background .25s,transform .25s,filter .25s}
+img.lg{background:#fff;padding:5px;box-sizing:border-box;filter:grayscale(1);opacity:.75}
 .pl:hover{color:var(--ink);transform:translateY(-2px)}
-.pl:hover i{background:var(--pc)}
+.pl:hover i.lg{background:var(--pc);transform:scale(1.08)}
+.pl:hover img.lg{filter:none;opacity:1;transform:scale(1.08)}
 
 /* dev */
 .dev{padding:140px 0}
@@ -281,6 +284,16 @@ body{transition:background-color .4s}
 @media (max-width:900px){.grid4{grid-template-columns:1fr 1fr}.role{grid-template-columns:1fr 40px}.role .rt,.role .rc{display:none}.steps3{grid-template-columns:1fr}}
 @media (max-width:600px){.grid4{grid-template-columns:1fr}.nav-cta .btn-dark{display:none}.seg button{padding:0 11px}}
 @media (hover:none){.peek{display:none}}
+.lang{height:36px;min-width:46px;padding:0 12px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--ink);font:inherit;font-size:13px;font-weight:600;cursor:pointer;transition:border-color .2s,background .2s}
+.lang:hover{border-color:var(--ink-2);background:var(--bg-2)}
+body main,body nav{transition:opacity .18s}
+body.lswap main,body.lswap nav .nav-links{opacity:.15}
+html[lang="en"] .stat span{font-size:14px}
+html[lang="en"] .nav-links{gap:22px}
+.brand svg.mark{flex:none}.wm b{white-space:nowrap}.lang{white-space:nowrap;flex:none}.seg button{white-space:nowrap}
+@media (max-width:600px){.wm small{display:none}.brand{gap:8px}.wm b{font-size:15px}.nav-cta{gap:6px}.lang{min-width:0;padding:0 10px}.seg button{padding:0 9px;font-size:12px}.nav .wrap{gap:12px}}
+@media (max-width:440px){html[lang="en"] .wm{display:none}}
+.roles-more{display:flex;justify-content:center;margin-top:40px}
 /* contact modal */
 .mdl{position:fixed;inset:0;z-index:120;display:flex;align-items:center;justify-content:center;padding:24px;background:rgba(0,0,0,.42);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s}
 .mdl.on{opacity:1;visibility:visible}
@@ -321,7 +334,7 @@ body{transition:background-color .4s}
   <a class="brand" href="#top" data-home><svg class="mark" aria-hidden="true"><use href="#fzmark"/></svg><span class="wm"><b>枫洲科技</b><small>FENGZHOU<em>·</em>TECH</small></span></a>
   <div class="nav-links ent-only"><a href="#foundation">关于我们</a><a href="#connect">人才网络</a><a href="#features">服务</a><a href="#process">合作流程</a><a href="#partners">服务客户</a></div>
   <div class="nav-links cand-only"><a href="#c-why">为什么选择枫洲</a><a href="#c-roles">热门方向</a><a href="#c-steps">求职流程</a><a href="#c-contact">联系顾问</a></div>
-  <div class="nav-cta"><div class="seg" id="seg"><i></i><button data-go="ent">企业</button><button data-go="cand">候选人</button></div><a class="btn btn-dark ent-only" href="#contact">提交招聘需求 <span class="arr">→</span></a><a class="btn btn-dark cand-only" href="#c-contact">投递简历 <span class="arr">→</span></a></div>
+  <div class="nav-cta"><button class="lang" id="lang" aria-label="Switch to English">EN</button><div class="seg" id="seg"><i></i><button data-go="ent">企业</button><button data-go="cand">候选人</button></div><a class="btn btn-dark ent-only" href="#contact">提交招聘需求 <span class="arr">→</span></a><a class="btn btn-dark cand-only" href="#c-contact">投递简历 <span class="arr">→</span></a></div>
 </div></nav>
 
 <main class="space" id="space-ent">
@@ -366,7 +379,7 @@ body{transition:background-color .4s}
 </section>
 
 <section class="reveal">
-  <div class="wrap"><p class="rvp" data-hl="懂技术。|懂行业。|更懂人。">懂技术。懂行业。更懂人。我们理解每一支模型团队的技术路线与组织需求，为每个岗位找到真正合适的人，也为每位候选人找到值得投入的舞台。</p></div>
+  <div class="wrap"><p class="rvp" data-hl="懂技术。|懂行业。|更懂人。" data-en="Know the tech. Know the industry. Know people. We understand each model team&#8217;s technical direction and organizational needs, find the right person for every role, and the right stage for every candidate." data-hl-en="Know the tech.|Know the industry.|Know people.">懂技术。懂行业。更懂人。我们理解每一支模型团队的技术路线与组织需求，为每个岗位找到真正合适的人，也为每位候选人找到值得投入的舞台。</p></div>
 </section>
 
 <section class="feat" id="features">
@@ -448,18 +461,19 @@ body{transition:background-color .4s}
     <h2 class="sec-h fade">热门方向</h2>
     <p class="sec-s fade">以下为示例方向，具体岗位与团队信息请联系顾问获取。</p>
     <div class="roles fade" id="roles">
-      <a class="role" href="#c-contact" data-d="参与千亿参数模型的预训练、数据配比与对齐研究。" data-l="P7–P9 · 研究型"><span class="rn">预训练算法专家</span><span class="rt">LLM · 预训练 · 对齐</span><span class="rc">北京 / 上海</span><span class="ra">→</span></a>
-      <a class="role" href="#c-contact" data-d="负责大模型推理引擎优化、量化与服务化部署。" data-l="P6–P8 · 工程型"><span class="rn">推理加速工程师</span><span class="rt">CUDA · 量化 · 部署</span><span class="rc">北京 / 杭州</span><span class="ra">→</span></a>
-      <a class="role" href="#c-contact" data-d="建设万卡级训练集群调度与稳定性平台。" data-l="P6–P9 · 平台型"><span class="rn">AI Infra 工程师</span><span class="rt">分布式 · 集群 · 调度</span><span class="rc">上海 / 深圳</span><span class="ra">→</span></a>
-      <a class="role" href="#c-contact" data-d="研究智能体规划、工具调用与长程任务能力。" data-l="P6–P8 · 研究型"><span class="rn">Agent 算法研究员</span><span class="rt">规划 · 工具调用 · RL</span><span class="rc">北京 / 远程</span><span class="ra">→</span></a>
-      <a class="role" href="#c-contact" data-d="探索图像、视频、语音生成与理解的统一建模。" data-l="P6–P9 · 研究型"><span class="rn">多模态生成算法</span><span class="rt">视频 · 语音 · 图像</span><span class="rc">上海 / 杭州</span><span class="ra">→</span></a>
-      <a class="role" href="#c-contact" data-d="定义模型能力的产品形态，推动从模型到用户价值的落地。" data-l="P6–P8 · 产品型"><span class="rn">AI 产品经理</span><span class="rt">模型应用 · 商业化</span><span class="rc">北京 / 上海</span><span class="ra">→</span></a>
+      <a class="role" href="https://m.zhipin.com/mpa/html/weijd/weijd-boss/6d88883cab5b41810nxy2NW4EVpT?sid=qr_self&amp;openWeapp=1&amp;sbcid=600449d07372ce071Xx_2tm-GVo~" target="_blank" rel="noopener" data-d="参与千亿参数模型的预训练、数据配比与对齐研究。" data-d-en="Pretraining, data mixture and alignment research on 100B+ parameter models." data-l-en="P7–P9 · Research" data-l="P7–P9 · 研究型"><span class="rn">预训练算法专家</span><span class="rt">LLM · 预训练 · 对齐</span><span class="rc">北京 / 上海</span><span class="ra">→</span></a>
+      <a class="role" href="https://m.zhipin.com/mpa/html/weijd/weijd-boss/6d88883cab5b41810nxy2NW4EVpT?sid=qr_self&amp;openWeapp=1&amp;sbcid=600449d07372ce071Xx_2tm-GVo~" target="_blank" rel="noopener" data-d="负责大模型推理引擎优化、量化与服务化部署。" data-d-en="Optimize LLM inference engines, quantization and production serving." data-l-en="P6–P8 · Engineering" data-l="P6–P8 · 工程型"><span class="rn">推理加速工程师</span><span class="rt">CUDA · 量化 · 部署</span><span class="rc">北京 / 杭州</span><span class="ra">→</span></a>
+      <a class="role" href="https://m.zhipin.com/mpa/html/weijd/weijd-boss/6d88883cab5b41810nxy2NW4EVpT?sid=qr_self&amp;openWeapp=1&amp;sbcid=600449d07372ce071Xx_2tm-GVo~" target="_blank" rel="noopener" data-d="建设万卡级训练集群调度与稳定性平台。" data-d-en="Build scheduling and reliability platforms for 10,000-GPU training clusters." data-l-en="P6–P9 · Platform" data-l="P6–P9 · 平台型"><span class="rn">AI Infra 工程师</span><span class="rt">分布式 · 集群 · 调度</span><span class="rc">上海 / 深圳</span><span class="ra">→</span></a>
+      <a class="role" href="https://m.zhipin.com/mpa/html/weijd/weijd-boss/6d88883cab5b41810nxy2NW4EVpT?sid=qr_self&amp;openWeapp=1&amp;sbcid=600449d07372ce071Xx_2tm-GVo~" target="_blank" rel="noopener" data-d="研究智能体规划、工具调用与长程任务能力。" data-d-en="Research agent planning, tool use and long-horizon task capabilities." data-l-en="P6–P8 · Research" data-l="P6–P8 · 研究型"><span class="rn">Agent 算法研究员</span><span class="rt">规划 · 工具调用 · RL</span><span class="rc">北京 / 远程</span><span class="ra">→</span></a>
+      <a class="role" href="https://m.zhipin.com/mpa/html/weijd/weijd-boss/6d88883cab5b41810nxy2NW4EVpT?sid=qr_self&amp;openWeapp=1&amp;sbcid=600449d07372ce071Xx_2tm-GVo~" target="_blank" rel="noopener" data-d="探索图像、视频、语音生成与理解的统一建模。" data-d-en="Unified modeling for image, video and speech generation and understanding." data-l-en="P6–P9 · Research" data-l="P6–P9 · 研究型"><span class="rn">多模态生成算法</span><span class="rt">视频 · 语音 · 图像</span><span class="rc">上海 / 杭州</span><span class="ra">→</span></a>
+      <a class="role" href="https://m.zhipin.com/mpa/html/weijd/weijd-boss/6d88883cab5b41810nxy2NW4EVpT?sid=qr_self&amp;openWeapp=1&amp;sbcid=600449d07372ce071Xx_2tm-GVo~" target="_blank" rel="noopener" data-d="定义模型能力的产品形态，推动从模型到用户价值的落地。" data-d-en="Shape products around model capabilities and turn them into user value." data-l-en="P6–P8 · Product" data-l="P6–P8 · 产品型"><span class="rn">AI 产品经理</span><span class="rt">模型应用 · 商业化</span><span class="rc">北京 / 上海</span><span class="ra">→</span></a>
     </div>
+    <div class="roles-more fade"><a class="btn btn-dark btn-lg" id="allRoles" href="https://m.zhipin.com/mpa/html/weijd/weijd-boss/6d88883cab5b41810nxy2NW4EVpT?sid=qr_self&amp;openWeapp=1&amp;sbcid=600449d07372ce071Xx_2tm-GVo~" target="_blank" rel="noopener">查看全部职位 <span class="arr">↗</span></a></div>
   </div>
 </section>
 
 <section class="reveal">
-  <div class="wrap"><p class="rvp" data-hl="你只需要专注于做出选择。">你只需要专注于做出选择。了解方向、打磨简历、准备面试、谈判薪酬，枫洲的职业顾问会陪你走完每一步，并对你的信息严格保密。</p></div>
+  <div class="wrap"><p class="rvp" data-hl="你只需要专注于做出选择。" data-en="All you need to do is decide. From choosing a direction and polishing your CV to interview prep and salary negotiation, a Fengzhou consultant walks every step with you, in strict confidence." data-hl-en="All you need to do is decide.">你只需要专注于做出选择。了解方向、打磨简历、准备面试、谈判薪酬，枫洲的职业顾问会陪你走完每一步，并对你的信息严格保密。</p></div>
 </section>
 
 <section class="feat" id="c-steps" style="padding-top:20px">
@@ -498,6 +512,71 @@ body{transition:background-color .4s}
 
 <script>
 (function(){
+/* ---------- i18n dictionary ---------- */
+let LANG='zh';
+const T={
+"枫洲科技":"Fengzhou Tech","关于我们":"About","人才网络":"Talent Network","服务":"Services","合作流程":"Process","服务客户":"Clients",
+"为什么选择枫洲":"Why Fengzhou","热门方向":"Open Roles","求职流程":"How It Works","联系顾问":"Contact","企业":"Employers","候选人":"Candidates",
+"提交招聘需求":"Hire with Us","投递简历":"Send Your CV",
+"服务 DeepSeek、MiniMax 等大模型公司":"Trusted by DeepSeek, MiniMax and other model labs",
+"连接顶尖 AI 人才":"Connecting top AI talent","与前沿模型公司":"with frontier model labs",
+"枫洲科技专注 AI 领域的人才招聘与咨询服务。我们为大模型公司精准寻访算法、工程、产品等关键人才，并提供人才战略、薪酬与组织搭建咨询，让每一次连接都更精准。":"Fengzhou Tech specializes in AI recruiting and advisory. We find the research, engineering and product talent that model companies need most, and advise on talent strategy, compensation and team building.",
+"了解我们的服务":"Explore Services","AI 人才的连接底座":"The connective layer for AI talent",
+"深入大模型行业，把分散的顶尖人才，连接到最需要他们的团队。":"Deep in the LLM industry, we connect scattered top talent with the teams that need them most.",
+"覆盖的 AI 核心人才库":"AI specialists in our talent pool","合作的模型与 AI 企业":"Model and AI companies served","3 天":"3 days","平均候选人推荐周期":"Average time to first shortlist","客户持续合作率":"Client retention rate",
+"01 · 现状":"01 · The challenge","顶尖人才稀缺，且高度分散":"Top talent is scarce and scattered",
+"大模型人才集中在少数团队和研究机构，主动求职的人很少，企业很难靠招聘渠道触达。":"LLM talent sits in a handful of teams and labs. Few are actively looking, and job boards rarely reach them.",
+"02 · 精准连接":"02 · Precise connection","以行业网络，主动连接每一位关键人才":"Our network reaches the people who matter",
+"枫洲长期深耕模型行业，持续追踪人才动向，按岗位画像主动寻访、深度沟通。":"We follow the industry and its talent closely, and approach the right people against a clear role profile.",
+"03 · 交付":"03 · Delivery","从寻访到入职，一站式交付":"From search to onboarding, end to end",
+"技术评估、面试协调、薪酬谈判到入职跟进，让企业只需做最终决定。":"Technical assessment, interviews, offer negotiation and onboarding follow-up. You just make the final call.",
+"枫洲":"Fengzhou","研":"R","训":"T","推":"I","产":"P","数":"D","多":"M",
+"算法研究员":"Researcher","预训练 · 对齐":"Pretrain · Align","训练工程师":"Training","分布式训练":"Distributed","推理优化":"Inference","部署 · 加速":"Deploy · Speed","产品经理":"AI PM","模型应用":"Model apps","数据工程师":"Data Eng.","数据 · 评测":"Data · Eval","多模态研究":"Multimodal","语音 · 视觉":"Speech · Vision",
+"招聘与咨询，双轮驱动":"Recruiting and advisory, working together",
+"从一个关键岗位到一支完整团队，覆盖模型公司人才建设的每个环节。":"From one critical hire to a full team, we cover every stage of building talent at model companies.",
+"高端人才寻访":"Executive Search","聚焦首席科学家、算法负责人、技术总监等关键岗位，一对一定向寻访。":"Dedicated search for chief scientists, research leads, engineering directors and other key roles.",
+"技术团队批量招聘":"Team Hiring at Scale","预训练、推理优化、数据、工程平台等团队规模化交付，节奏与业务同步。":"Scaled hiring for pretraining, inference, data and platform teams, paced with your roadmap.",
+"人才地图":"Talent Mapping","梳理目标领域的团队结构与人才分布，为招聘策略和组织规划提供依据。":"We map team structures and talent in your target domain to inform hiring and org planning.",
+"薪酬与职级咨询":"Compensation & Leveling","基于行业一线数据做薪酬对标与职级设计，提升 Offer 竞争力与内部公平。":"Benchmarking and level design built on first-hand market data, for competitive offers and internal fairness.",
+"组织与团队搭建":"Org & Team Design","为新业务或新团队设计组织架构、岗位体系与招聘节奏，从 0 到 1 落地。":"Org structure, role architecture and hiring plans for new teams, from zero to one.",
+"候选人深度评估":"In-depth Assessment","技术背景评估、过往项目核实与背景调查，降低关键岗位的用人风险。":"Technical evaluation, project verification and reference checks to reduce risk on critical hires.",
+"我们服务的模型公司":"Model companies we work with","通义千问":"Qwen","智谱 GLM":"Zhipu GLM","混元":"Hunyuan","阶跃星辰":"StepFun",
+"清晰透明的合作流程":"A clear, transparent process","每个阶段都有明确的交付物和时间节点，企业随时掌握招聘进展。":"Every stage has defined deliverables and timelines, so you always know where hiring stands.",
+"专属顾问一对一对接，响应及时":"A dedicated consultant who responds quickly","每周同步进展，关键节点清晰可追踪":"Weekly updates with trackable milestones","候选人信息严格保密，双向尊重":"Strict confidentiality and respect on both sides",
+"为下一位关键人才":"Connect with your","建立连接":"next key hire",
+"提交招聘需求，专属顾问将在 1 个工作日内与你联系。":"Share your hiring need and a dedicated consultant will reach out within one business day.",
+"我是候选人":"I'm a Candidate","© 2026 枫洲科技。保留所有权利。":"© 2026 Fengzhou Tech. All rights reserved.","关于我们 · 服务 · 合作流程 · 服务客户 · 联系我们":"About · Services · Process · Clients · Contact",
+"继续向下滚动":"Keep scrolling","进入候选人空间":"Enter the candidate space","寻找你在 AI 时代的下一站":"Find your next move in the AI era",
+"候选人空间":"Candidate space","下一站，":"Your next move:","最前沿的模型团队":"frontier model teams","候选人空间 · 枫洲科技":"Candidate space · Fengzhou Tech",
+"枫洲连接国内领先的大模型公司。我们提供非公开的岗位机会、一对一职业顾问与薪酬谈判支持，帮你找到真正值得投入的下一份工作。":"We connect you with China's leading model companies, with confidential openings, a dedicated career consultant and support through offer negotiation.",
+"查看热门方向":"See Open Roles","为什么通过枫洲求职":"Why go through Fengzhou","我们不是简历中转站，而是长期陪伴你职业发展的行业顾问。":"We're not a CV relay. We're industry consultants who stay with you across your career.",
+"非公开机会":"Confidential openings","大量核心岗位不对外发布，只通过信任的顾问定向推荐。":"Many core roles are never posted and are filled only through trusted consultants.",
+"专属职业顾问":"Dedicated consultant","懂技术的顾问一对一沟通，帮你判断方向、团队与成长空间。":"Talk one-on-one with a consultant who knows the tech about direction, team and growth.",
+"薪酬谈判支持":"Offer negotiation","基于一线薪酬数据，帮你争取与能力匹配的 Offer。":"Market compensation data to help you secure an offer that matches your ability.",
+"严格保密":"Strict confidentiality","未经你同意，不会向任何公司推荐你的简历与个人信息。":"We never share your CV or details with any company without your consent.",
+"以下为示例方向，具体岗位与团队信息请联系顾问获取。":"Example areas below. Contact a consultant for specific roles and teams.",
+"预训练算法专家":"Pretraining Research Lead","LLM · 预训练 · 对齐":"LLM · Pretraining · Alignment","北京 / 上海":"Beijing / Shanghai",
+"推理加速工程师":"Inference Engineer","CUDA · 量化 · 部署":"CUDA · Quantization · Serving","北京 / 杭州":"Beijing / Hangzhou",
+"AI Infra 工程师":"AI Infra Engineer","分布式 · 集群 · 调度":"Distributed · Clusters · Scheduling","上海 / 深圳":"Shanghai / Shenzhen",
+"Agent 算法研究员":"Agent Research Scientist","规划 · 工具调用 · RL":"Planning · Tool use · RL","北京 / 远程":"Beijing / Remote",
+"多模态生成算法":"Multimodal Generation","视频 · 语音 · 图像":"Video · Speech · Image","上海 / 杭州":"Shanghai / Hangzhou",
+"AI 产品经理":"AI Product Manager","模型应用 · 商业化":"Model apps · Commercialization",
+"三步，开始你的下一站":"Three steps to your next move","深度沟通":"Conversation","与顾问聊聊你的经历、兴趣方向和期望，明确真正想要的机会。":"Talk with a consultant about your background, interests and goals to pin down what you really want.",
+"精准匹配":"Matching","顾问推荐匹配的团队与岗位，介绍团队背景、技术路线与面试重点。":"Get matched with teams and roles, with context on team background, tech direction and interview focus.",
+"面试与入职":"Interviews & onboarding","全程协调面试、反馈与薪酬沟通，入职后持续跟进你的发展。":"We coordinate interviews, feedback and compensation talks, and keep supporting you after you join.",
+"把简历交给懂行的人":"Hand your CV to people who get it","剩下的交给枫洲":"leave the rest to Fengzhou",
+"所有信息仅用于职业机会匹配，未经你同意不会推荐给任何公司。":"Your information is used only for career matching and is never shared without your consent.",
+"预约顾问沟通":"Book a Consultation","查看全部职位":"View All Openings","为什么选择枫洲 · 热门方向 · 求职流程 · 联系顾问":"Why Fengzhou · Open Roles · How It Works · Contact",
+"回到企业空间":"Back to the employer space","了解枫洲如何为模型公司建立团队":"See how Fengzhou builds teams for model companies","企业空间":"Employer space","企业合作":"For employers",
+"添加顾问微信或直接致电，告诉我们你的岗位需求，我们会尽快与你联系。":"Add our consultant on WeChat or call to share your hiring need. We'll get back to you shortly.",
+"微信扫码添加顾问":"Scan to add on WeChat","打开微信「扫一扫」，添加 Alisa 为好友，直接沟通岗位需求。":"Open WeChat, tap Scan and add Alisa to discuss your hiring need.",
+"微信号":"WeChat ID","复制":"Copy","已复制":"Copied","手机号":"Phone","拨打电话":"Call Now",
+"请将简历发送至以下邮箱，邮件标题建议注明意向方向和姓名。你的信息仅用于职业机会匹配，我们会严格保密。":"Send your CV to the email below, with your target area and name in the subject line. Your information stays strictly confidential.",
+"简历投递邮箱":"CV email","发送邮件":"Send Email","关闭":"Close","顾问 Alisa 的微信二维码":"WeChat QR code of consultant Alisa",
+"枫洲科技 · AI 人才招聘与咨询":"Fengzhou Tech · AI Recruiting & Advisory"
+};
+const L=s=>LANG==='en'&&T[s]?T[s]:s;
+
 const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
 const DPR = Math.min(devicePixelRatio || 1, 2);
@@ -537,18 +616,19 @@ initNet('net');initNet('net2');
 /* ---------- stripe-like burst with hover ---------- */
 (function(){
   const cv=document.getElementById('burst'),ctx=cv.getContext('2d'),cap=document.getElementById('burstCap');let W,H,on=true,active=0,auto=true,t0=performance.now();
-  const caps=['人才库覆盖 <em>10,000+</em> 位算法、工程与产品人才','已与 <em>100+</em> 家模型与 AI 企业合作','平均 <em>3 天</em> 即可推荐匹配的候选人','<em>90%</em> 的客户选择长期合作'];
+  const capsZh=['人才库覆盖 <em>10,000+</em> 位算法、工程与产品人才','已与 <em>100+</em> 家模型与 AI 企业合作','平均 <em>3 天</em> 即可推荐匹配的候选人','<em>90%</em> 的客户选择长期合作'];
+  const capsEn=['<em>10,000+</em> research, engineering and product specialists in our pool','Working with <em>100+</em> model and AI companies','Matched candidates in <em>3 days</em> on average','<em>90%</em> of clients keep working with us'];
   const modes=[{n:150,spread:1.25,len:.95,speed:.5,col:'--accent'},{n:90,spread:.75,len:.8,speed:.25,col:'--ok'},{n:120,spread:1.0,len:.6,speed:1.6,col:'--accent-2'},{n:220,spread:1.45,len:1,speed:.8,col:'--accent-3'}];
   const lines=[];for(let i=0;i<240;i++)lines.push({a:Math.random()*2-1,l:.45+Math.random()*.55,ph:Math.random(),w:Math.random(),dot:Math.random()<.55});
   const cur={n:150,spread:1.25,len:.95,speed:.5,rgb:[47,107,255]};
   function size(){W=cv.clientWidth;H=cv.clientHeight;cv.width=W*DPR;cv.height=H*DPR;ctx.setTransform(DPR,0,0,DPR,0,0)}
   size();addEventListener('resize',size);
   const stats=[...document.querySelectorAll('.stat')];
-  function set(i){active=i;stats.forEach((s,k)=>s.classList.toggle('on',k===i));cap.style.opacity=0;setTimeout(()=>{cap.innerHTML=caps[i];cap.style.opacity=1},180)}
+  function set(i){active=i;stats.forEach((s,k)=>s.classList.toggle('on',k===i));cap.style.opacity=0;setTimeout(()=>{cap.innerHTML=(LANG==='en'?capsEn:capsZh)[i];cap.style.opacity=1},180)}
   set(0);
   stats.forEach((s,i)=>{s.addEventListener('pointerenter',()=>{auto=false;set(i)});});
   document.getElementById('stats').addEventListener('pointerleave',()=>{auto=true;t0=performance.now()});
-  setInterval(()=>{if(auto&&on)set((active+1)%4)},3200);
+  setInterval(()=>{if(auto&&on)set((active+1)%4)},3200);addEventListener('fzlang',()=>set(active));
   visible(cv,v=>{on=v;if(v)requestAnimationFrame(draw)});
   let last=performance.now();
   function draw(now){
@@ -568,7 +648,7 @@ initNet('net');initNet('net2');
 /* ---------- apple-like scroll morph ---------- */
 (function(){
   const sec=document.getElementById('connect'),stage=document.getElementById('stage'),svg=document.getElementById('links'),core=document.getElementById('core');
-  const models=[['算法研究员','预训练 · 对齐','#2F6BFF','研'],['训练工程师','分布式训练','#7A5CFF','训'],['推理优化','部署 · 加速','#1D1D1F','推'],['AI 产品经理','模型应用','#FF7A45','产'],['数据工程师','数据 · 评测','#18B47B','数'],['多模态研究','语音 · 视觉','#0EA5E9','多']];
+  const models=[['算法研究员','预训练 · 对齐','#2F6BFF','研'],['训练工程师','分布式训练','#7A5CFF','训'],['推理优化','部署 · 加速','#1D1D1F','推'],['产品经理','模型应用','#FF7A45','产'],['数据工程师','数据 · 评测','#18B47B','数'],['多模态研究','语音 · 视觉','#0EA5E9','多']];
   const cards=models.map(m=>{const d=document.createElement('div');d.className='mcard';d.innerHTML=`<i style="background:${m[2]}">${m[3]}</i><div><b>${m[0]}</b><small>${m[1]}</small></div>`;stage.appendChild(d);return d});
   const ls=cards.map(()=>{const l=document.createElementNS('http://www.w3.org/2000/svg','line');svg.appendChild(l);return l});
   const caps=[...stage.querySelectorAll('.cap')],bars=[...document.querySelectorAll('#prog i')];
@@ -595,11 +675,12 @@ initNet('net');initNet('net2');
 
 /* ---------- reveal words ---------- */
 document.querySelectorAll('.rvp').forEach(p=>{
-  const hl=(p.dataset.hl||'').split('|').filter(Boolean),txt=p.textContent;p.textContent='';const spans=[];
-  [...txt].forEach(ch=>{const s=document.createElement('span');s.textContent=ch;p.appendChild(s);spans.push(s)});
-  hl.forEach(h=>{const i=txt.indexOf(h);if(i>=0)for(let k=i;k<i+h.length;k++)spans[k].classList.add('hl')});
+  const src={zh:[p.textContent,p.dataset.hl||''],en:[p.dataset.en||p.textContent,p.dataset.hlEn||'']};let spans=[];
+  function build(){const [txt,h]=src[LANG];p.textContent='';spans=[];
+    [...txt].forEach(ch=>{const s=document.createElement('span');s.textContent=ch;p.appendChild(s);spans.push(s)});
+    h.split('|').filter(Boolean).forEach(x=>{const i=txt.indexOf(x);if(i>=0)for(let k=i;k<i+x.length;k++)spans[k].classList.add('hl')});upd()}
   function upd(){if(!p.offsetParent)return;const r=p.getBoundingClientRect(),vh=innerHeight,pr=clamp((vh*.85-r.top)/(r.height+vh*.35),0,1),n=Math.floor(pr*spans.length*1.05);spans.forEach((s,i)=>s.classList.toggle('lit',i<n))}
-  addEventListener('scroll',()=>requestAnimationFrame(upd),{passive:true});upd();
+  addEventListener('scroll',()=>requestAnimationFrame(upd),{passive:true});addEventListener('fzlang',build);build();
 });
 
 /* ---------- feature hover tilt & spotlight ---------- */
@@ -611,27 +692,38 @@ document.querySelectorAll('.fc').forEach(c=>{
 /* ---------- partners marquee ---------- */
 (function(){
   const list=[['DeepSeek','#4D6BFE'],['MiniMax','#E2167E'],['通义千问','#615CED'],['Kimi','#7C7C85'],['智谱 GLM','#3859FF'],['Vidu','#14B8A6'],['混元','#0052D9'],['阶跃星辰','#6D5BFF'],['Open Design','#F43F5E'],['SimpleX','#22C55E']];
-  const m=document.getElementById('mq');const html=list.map(x=>`<span class="pl" style="--pc:${x[1]}"><i></i>${x[0]}</span>`).join('');m.innerHTML=html+html;
+  /* 客户 Logo：把已获授权的 Logo 文件地址（或 data: URI）填到对应名称后面，就会替换掉字母标识 */
+  const LOGOS={'DeepSeek':'','MiniMax':'','通义千问':'','Kimi':'','智谱 GLM':'','Vidu':'','混元':'','阶跃星辰':'','Open Design':'','SimpleX':''};
+  const MONO={'DeepSeek':'D','MiniMax':'M','通义千问':'Q','Kimi':'K','智谱 GLM':'Z','Vidu':'V','混元':'H','阶跃星辰':'S','Open Design':'O','SimpleX':'X'};
+  const m=document.getElementById('mq');const html=list.map(x=>`<span class="pl" style="--pc:${x[1]}">${LOGOS[x[0]]?`<img class="lg" src="${LOGOS[x[0]]}" alt="">`:`<i class="lg" aria-hidden="true">${MONO[x[0]]||x[0][0]}</i>`}<span>${x[0]}</span></span>`).join('');m.innerHTML=html+html;
 })();
 
 /* ---------- process tabs ---------- */
 (function(){
-  const steps=[
+  const S={zh:[
     ['需求诊断','与业务负责人深入沟通，明确岗位职责、技术栈、团队情况与人才画像。','1 天内',['岗位画像与评估标准','目标公司与人才地图','招聘节奏与里程碑'],'#2F6BFF'],
     ['人才寻访','依托行业人才网络定向寻访，主动触达非公开求职的关键人才，平均 3 天推荐首批人选。','平均 3 天',['定向寻访名单','候选人初步沟通','意向与动机评估'],'#7A5CFF'],
     ['评估推荐','从技术深度、项目经历与团队匹配度三方面评估，只推荐真正合适的人选。','持续进行',['候选人评估报告','技术亮点与风险提示','每周进展同步'],'#FF7A45'],
     ['面试协调','安排面试并收集双方反馈，及时调整寻访方向，缩短决策周期。','按面试进度',['面试日程安排','双向反馈整理','寻访方向调整'],'#18B47B'],
-    ['Offer 与入职','协助薪酬沟通与 Offer 谈判，跟进背景调查与入职准备，并做入职后回访。','1–4 周',['薪酬方案建议','背景调查','入职后 3 个月跟进'],'#0EA5E9']];
+    ['Offer 与入职','协助薪酬沟通与 Offer 谈判，跟进背景调查与入职准备，并做入职后回访。','1–4 周',['薪酬方案建议','背景调查','入职后 3 个月跟进'],'#0EA5E9']],
+  en:[
+    ['Discovery','We work with hiring leaders to define responsibilities, tech stack, team context and the ideal profile.','Within 1 day',['Role profile and evaluation criteria','Target companies and talent map','Hiring timeline and milestones'],'#2F6BFF'],
+    ['Search','We search our industry network to reach key people who are not actively looking, with a first shortlist in 3 days on average.','3 days on average',['Targeted search list','Initial candidate conversations','Motivation and fit check'],'#7A5CFF'],
+    ['Assessment','We assess technical depth, project experience and team fit, and recommend only the right people.','Ongoing',['Candidate assessment reports','Strengths and risk notes','Weekly progress updates'],'#FF7A45'],
+    ['Interviews','We schedule interviews, gather feedback from both sides and refine the search to speed up decisions.','Per interview cycle',['Interview scheduling','Two-way feedback','Search adjustments'],'#18B47B'],
+    ['Offer & onboarding','We support compensation talks and offer negotiation, run reference checks and follow up after onboarding.','1–4 weeks',['Compensation recommendations','Reference checks','3-month post-hire follow-up'],'#0EA5E9']]};
+  const W={zh:['步骤','周期：','专属顾问全程跟进'],en:['Step','Timeline: ','Dedicated consultant throughout']};
   const tabs=document.getElementById('tabs'),body=document.getElementById('pbody'),panel=document.getElementById('panel'),bar=document.getElementById('steps');
-  tabs.innerHTML=steps.map((s,i)=>`<button class="tab${i?'':' on'}" data-i="${i}">${i+1}. ${s[0]}</button>`).join('');
-  bar.innerHTML=steps.map(()=>'<i></i>').join('');
   let cur=0,timer;
-  function show(i){cur=i;const s=steps[i];panel.style.setProperty('--pcol',s[4]);tabs.querySelectorAll('.tab').forEach((t,k)=>t.classList.toggle('on',k===i));bar.querySelectorAll('i').forEach((t,k)=>t.classList.toggle('on',k<=i));
-    body.classList.add('swap');setTimeout(()=>{body.innerHTML=`<div class="no">步骤 0${i+1} / 05</div><h4>${s[0]}</h4><p>${s[1]}</p><div class="meta"><span>周期：${s[2]}</span><span>专属顾问全程跟进</span></div><ul>${s[3].map(x=>`<li>${x}</li>`).join('')}</ul>`;body.classList.remove('swap')},180)}
-  show(0);
-  tabs.querySelectorAll('.tab').forEach(t=>{t.addEventListener('click',()=>{clearInterval(timer);show(+t.dataset.i)});t.addEventListener('pointerenter',()=>{clearInterval(timer);show(+t.dataset.i)})});
-  timer=setInterval(()=>show((cur+1)%steps.length),4000);
+  function build(){const st=S[LANG];tabs.innerHTML=st.map((s,i)=>`<button class="tab" data-i="${i}">${i+1}. ${s[0]}</button>`).join('');bar.innerHTML=st.map(()=>'<i></i>').join('');
+    tabs.querySelectorAll('.tab').forEach(t=>{t.addEventListener('click',()=>{clearInterval(timer);show(+t.dataset.i)});t.addEventListener('pointerenter',()=>{clearInterval(timer);show(+t.dataset.i)})});show(cur,true)}
+  function show(i,now){cur=i;const s=S[LANG][i],w=W[LANG];panel.style.setProperty('--pcol',s[4]);tabs.querySelectorAll('.tab').forEach((t,k)=>t.classList.toggle('on',k===i));bar.querySelectorAll('i').forEach((t,k)=>t.classList.toggle('on',k<=i));
+    const fill=()=>{body.innerHTML=`<div class="no">${w[0]} 0${i+1} / 05</div><h4>${s[0]}</h4><p>${s[1]}</p><div class="meta"><span>${w[1]}${s[2]}</span><span>${w[2]}</span></div><ul>${s[3].map(x=>`<li>${x}</li>`).join('')}</ul>`;body.classList.remove('swap')};
+    if(now)fill();else{body.classList.add('swap');setTimeout(fill,180)}}
+  build();addEventListener('fzlang',build);
+  timer=setInterval(()=>show((cur+1)%5),4000);
 })();
+
 /* ---------- two spaces & portals ---------- */
 (function(){
   const root=document.documentElement,spaces={ent:document.getElementById('space-ent'),cand:document.getElementById('space-cand')};
@@ -640,7 +732,6 @@ document.querySelectorAll('.fc').forEach(c=>{
   function paintSeg(){segB.forEach(b=>b.classList.toggle('on',b.dataset.go===cur));const b=segB.find(x=>x.dataset.go===cur);segI.style.width=b.offsetWidth+'px';segI.style.transform=`translateX(${b.offsetLeft-3}px)`}
   function apply(to){cur=to;root.dataset.space=to;for(const k in spaces){spaces[k].hidden=k!==to;spaces[k].classList.remove('arrive')}
     scrollTo(0,0);dispatchEvent(new Event('resize'));void spaces[to].offsetWidth;spaces[to].classList.add('arrive');paintSeg();
-    try{history.replaceState(null,'',to==='cand'?'#candidate':location.pathname+location.search)}catch(e){}
     setTimeout(()=>{busy=false;dispatchEvent(new Event('scroll'))},700)}
   function flashTo(to,x,y){if(busy||to===cur)return;busy=true;const f=document.getElementById('flash');
     f.className='flash '+(to==='cand'?'to-cand':'to-ent');f.style.setProperty('--fx',x+'px');f.style.setProperty('--fy',y+'px');void f.offsetWidth;f.classList.add('go');
@@ -673,14 +764,13 @@ document.querySelectorAll('.fc').forEach(c=>{
       if(p>=.995&&!busy){busy=true;apply(o.to)}}}
   addEventListener('scroll',()=>{if(!tk){tk=true;requestAnimationFrame(upd)}},{passive:true});
   addEventListener('resize',()=>{paintSeg();upd()});
-  if(location.hash==='#candidate'){cur='cand';root.dataset.space='cand';spaces.ent.hidden=true;spaces.cand.hidden=false;setTimeout(()=>dispatchEvent(new Event('resize')),0)}
   paintSeg();upd();
 
   /* role peek */
   const pk=document.getElementById('peek'),pb=pk.querySelector('b'),pp=pk.querySelector('p'),ps=pk.querySelector('span');let px=0,py=0,tx=0,ty=0,raf=0;
   function mv(){px=lerp(px,tx,.18);py=lerp(py,ty,.18);pk.style.transform=`translate(${px}px,${py}px)`;raf=Math.abs(px-tx)+Math.abs(py-ty)>.5?requestAnimationFrame(mv):0}
   document.querySelectorAll('.role').forEach(r=>{
-    r.addEventListener('pointerenter',e=>{pb.textContent=r.querySelector('.rn').textContent;pp.textContent=r.dataset.d;ps.textContent=r.dataset.l+' · 联系顾问了解详情';pk.classList.add('on');px=tx=e.clientX+24;py=ty=e.clientY+18});
+    r.addEventListener('pointerenter',e=>{pb.textContent=r.querySelector('.rn').textContent;pp.textContent=LANG==='en'?r.dataset.dEn:r.dataset.d;ps.textContent=(LANG==='en'?r.dataset.lEn+' · Contact a consultant for details':r.dataset.l+' · 联系顾问了解详情');pk.classList.add('on');px=tx=e.clientX+24;py=ty=e.clientY+18});
     r.addEventListener('pointermove',e=>{tx=Math.min(e.clientX+24,innerWidth-280);ty=e.clientY+18;if(!raf)raf=requestAnimationFrame(mv)});
     r.addEventListener('pointerleave',()=>pk.classList.remove('on'))});
 })();
@@ -688,14 +778,34 @@ document.querySelectorAll('.fc').forEach(c=>{
 /* ---------- contact modals ---------- */
 (function(){
   let last=null;
+  window.track=function(name,data){try{if(window.umami&&umami.track)umami.track(name,Object.assign({语言:LANG==='en'?'英文':'中文'},data||{}))}catch(e){}};
+  const where=a=>a.closest('nav')?'导航栏':a.closest('.hero')?'首屏':a.closest('.cta')?'底部':'其他';
+  document.getElementById('allRoles').addEventListener('click',()=>track('点击查看全部职位',{位置:'热门方向'}));
+  document.querySelectorAll('.role').forEach(r=>r.addEventListener('click',()=>track('点击职位',{职位:r.querySelector('.rn').textContent})));
   function open(id){const m=document.getElementById(id);last=document.activeElement;m.classList.add('on');setTimeout(()=>m.querySelector('.mx').focus(),50)}
   function close(m){m.classList.remove('on');if(last)last.focus()}
-  document.querySelectorAll('a.btn').forEach(a=>{if(a.closest('.mdl'))return;const t=a.textContent;const id=t.includes('提交招聘需求')?'mdl-hire':t.includes('投递简历')?'mdl-cv':null;if(id)a.addEventListener('click',e=>{e.preventDefault();open(id)})});
+  document.querySelectorAll('a.btn').forEach(a=>{if(a.closest('.mdl'))return;const t=a.textContent;const id=t.includes('提交招聘需求')?'mdl-hire':t.includes('投递简历')?'mdl-cv':null;if(id)a.addEventListener('click',e=>{e.preventDefault();open(id);track(id==='mdl-hire'?'点击提交招聘需求':'点击投递简历',{位置:where(a)})})});
   document.querySelectorAll('.mdl').forEach(m=>{m.addEventListener('click',e=>{if(e.target===m)close(m)});m.querySelector('.mx').addEventListener('click',()=>close(m))});
   addEventListener('keydown',e=>{if(e.key==='Escape')document.querySelectorAll('.mdl.on').forEach(close)});
   function fallback(v){const t=document.createElement('textarea');t.value=v;t.style.position='fixed';t.style.opacity='0';document.body.appendChild(t);t.select();try{document.execCommand('copy')}catch(e){}t.remove()}
-  document.querySelectorAll('.mcp').forEach(b=>b.addEventListener('click',()=>{const v=b.dataset.copy;const done=()=>{b.textContent='已复制';b.classList.add('ok');setTimeout(()=>{b.textContent='复制';b.classList.remove('ok')},1600)};try{navigator.clipboard.writeText(v).then(done,()=>{fallback(v);done()})}catch(e){fallback(v);done()}}));
+  document.querySelectorAll('.mcp').forEach(b=>b.addEventListener('click',()=>{const v=b.dataset.copy;const done=()=>{b.textContent=L('已复制');b.classList.add('ok');setTimeout(()=>{b.textContent=L('复制');b.classList.remove('ok')},1600)};try{navigator.clipboard.writeText(v).then(done,()=>{fallback(v);done()})}catch(e){fallback(v);done()}}));
 })();
+/* ---------- language switch ---------- */
+(function(){
+  const nodes=[],attrs=[],skip='script,style,.rvp,#pbody,#burstCap,#tabs,#lang';
+  const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,{acceptNode:n=>{const p=n.parentElement;if(!p||p.closest(skip))return 2;return /[\u4e00-\u9fff]/.test(n.nodeValue)?1:2}});
+  let n;while(n=w.nextNode())nodes.push([n,n.nodeValue]);
+  document.querySelectorAll('[aria-label],[alt]').forEach(e=>['aria-label','alt'].forEach(a=>{const v=e.getAttribute(a);if(v&&/[\u4e00-\u9fff]/.test(v))attrs.push([e,a,v])}));
+  const title0=document.title,btn=document.getElementById('lang');
+  function set(lang,save){LANG=lang;document.documentElement.lang=lang==='en'?'en':'zh-CN';
+    for(const [nd,zh] of nodes){const k=zh.trim();nd.nodeValue=lang==='en'&&T[k]?zh.replace(k,T[k]):zh}
+    for(const [e,a,zh] of attrs)e.setAttribute(a,L(zh));
+    document.title=L(title0);btn.textContent=lang==='en'?'中文':'EN';btn.setAttribute('aria-label',lang==='en'?'切换到中文':'Switch to English');
+    dispatchEvent(new Event('fzlang'));dispatchEvent(new Event('resize'))}
+  btn.addEventListener('click',()=>{document.body.classList.add('lswap');setTimeout(()=>{set(LANG==='en'?'zh':'en',true);document.body.classList.remove('lswap')},180)});
+  set('zh',false);
+})();
+
 })();
 </script>
 </body>
